@@ -1,0 +1,1 @@
+export default function Page(){return <section className="section"><div className="container"><p className="eyebrow">Благодарим ви</p><h1 style={{fontSize:64}}>Поръчката е приета.</h1><p className="muted">Ще получите потвърждение с данните и следващите стъпки.</p></div></section>}

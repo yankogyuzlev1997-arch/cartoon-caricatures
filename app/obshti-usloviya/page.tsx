@@ -1,0 +1,1 @@
+export const dynamic='force-dynamic';export default function Page(){return <section className="section"><div className="container"><h1 style={{fontSize:56}}>Общи условия</h1><p>Шаблон за търговски условия, плащане, доставка, отказ и рекламации. Изисква данните на търговеца и правен преглед.</p></div></section>}
