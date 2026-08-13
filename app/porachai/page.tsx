@@ -1,1 +1,0 @@
-import Configurator from '@/components/configurator';export const metadata={title:'Поръчай персонална карикатура'};export default function Page(){return <><section className="page-hero"><p className="kicker">Създайте своя подарък</p><h1>Поръчайте персонална карикатура</h1></section><div className="container config"><Configurator/></div></>}

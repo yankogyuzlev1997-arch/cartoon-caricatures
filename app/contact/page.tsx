@@ -1,1 +1,0 @@
-export default function Page(){return <section className="section"><div className="container"><p className="eyebrow">Пишете ни</p><h1 style={{fontSize:64}}>Контакти</h1><p className="muted">Добавете официалния имейл, телефон и адрес на ателието от администрацията.</p></div></section>}

@@ -1,1 +1,0 @@
-import {faqs} from '@/lib/content';export default function Page(){return <><section className="page-hero"><h1>Често задавани въпроси</h1></section><section className="content faq-wrap">{faqs.map(f=><details key={f.q}><summary>{f.q}<span>+</span></summary><p>{f.a}</p></details>)}</section></>}

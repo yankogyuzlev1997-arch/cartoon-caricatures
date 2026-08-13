@@ -1,1 +1,0 @@
-import Link from 'next/link';export default function NotFound(){return <section className="section"><div className="container" style={{textAlign:'center'}}><p className="eyebrow">404</p><h1 style={{fontSize:70}}>Тази нишка не води никъде.</h1><p className="muted">Но колекцията е само на една крачка.</p><Link className="btn" href="/shop">Към колекцията</Link></div></section>}
