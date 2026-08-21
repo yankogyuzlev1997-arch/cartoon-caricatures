@@ -92,7 +92,16 @@ function enhanceOrderForm() {
   form.addEventListener("input", (event) => {
     if (event.target?.id === "faces") refreshOrderSummary(form);
   });
-  form.querySelector(".counter")?.addEventListener("click", () => setTimeout(() => refreshOrderSummary(form), 0));
+  form.querySelector(".counter")?.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    const input = form.querySelector("#faces");
+    if (!button || !(input instanceof HTMLInputElement)) return;
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    const current = Math.max(1, Math.min(20, Number.parseInt(input.value || "1", 10) || 1));
+    input.value = String(button.textContent?.includes("−") ? Math.max(1, current - 1) : Math.min(20, current + 1));
+    refreshOrderSummary(form);
+  }, true);
 }
 
 document.addEventListener("click", (event) => {
@@ -104,6 +113,14 @@ document.addEventListener("click", (event) => {
     if (order) {
       event.preventDefault();
       event.stopPropagation();
+      const requestedSize = text.match(/Избери\s+(A[234])/i)?.[1]?.toUpperCase();
+      if (requestedSize) {
+        const input = order.querySelector(`input[name="size-choice"][value="${requestedSize}"]`);
+        if (input instanceof HTMLInputElement) {
+          input.checked = true;
+          refreshOrderSummary(input.form);
+        }
+      }
       location.hash = "order";
       order.scrollIntoView({ behavior: "smooth", block: "start" });
     }
