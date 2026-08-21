@@ -17,6 +17,13 @@ function euro(value) {
   }).format(value);
 }
 
+function normalizeBulgarianPhone(value) {
+  const digits = String(value || "").replace(/\D/g, "");
+  if (digits.startsWith("359")) return `+${digits}`;
+  if (digits.startsWith("0")) return `+359${digits.slice(1)}`;
+  return `+359${digits}`;
+}
+
 function refreshOrderSummary(form) {
   const { size, faces, artwork, total } = selectedOrderOptions(form);
 
@@ -147,6 +154,7 @@ document.addEventListener("submit", async (event) => {
     formData.set("size", options.size);
     formData.set("faces", String(options.faces));
     formData.set("total", String(options.total));
+    formData.set("phone", normalizeBulgarianPhone(formData.get("phone")));
     const fileInput = form.querySelector('input[type="file"]');
     if (fileInput?.files) Array.from(fileInput.files).forEach((file) => formData.append("photos", file));
 
